@@ -48,20 +48,20 @@ export const useColorStore = defineStore('color', () => {
     }
 
     const lockColor = (el : MouseEvent, data: string, i: number) => {
-        const nodes : HTMLElement[]  = (el.target as HTMLElement).childNodes;
+        const nodes = (el.target as HTMLElement).childNodes;
         showLockedAlert.value = true;
         colorLocked.value = data;
-        if (nodes[0].classList.contains('unlocked')) {
-            nodes[0].style.display = 'none';
-            nodes[1].style.display = 'block';
-            nodes[0].classList.remove('unlocked');
+        if ((nodes[0] as HTMLElement).classList.contains('unlocked')) {
+            (nodes[0] as HTMLElement).style.display = 'none';
+            (nodes[1] as HTMLElement).style.display = 'block';
+            (nodes[0] as HTMLElement).classList.remove('unlocked');
             document.getElementById(`color${data.substring(1)}`)!.style.backgroundColor = '#FF0000';
             isLocked.value = 'locked';
             lockedColors.value[i] = data;
         } else {
-            nodes[0].style.display = 'block';
-            nodes[1].style.display = 'none';
-            nodes[0].classList.add('unlocked');
+            (nodes[0] as HTMLElement).style.display = 'block';
+            (nodes[1] as HTMLElement).style.display = 'none';
+            (nodes[0] as HTMLElement).classList.add('unlocked');
             document.getElementById(`color${data.substring(1)}`)!.style.backgroundColor = '#F8F8F8';
             isLocked.value = 'unlocked';
             lockedColors.value[i] = '';
@@ -71,6 +71,6 @@ export const useColorStore = defineStore('color', () => {
         }, 2000);
     };
 
-    return { colors, isLocked, showLockedAlert, isLocked, colorLocked, colorCopied
+    return { colors, isLocked, showLockedAlert, colorLocked, colorCopied
             , createColorPalette, addColor, removeColor, lockColor }
 })

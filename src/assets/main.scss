@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import '../../node_modules/bootstrap/scss/functions';
+@import '../../node_modules/bootstrap/scss/variables';
+
+$primary: #7E6CCA;
+$success: #2DCE89;
+$danger: #FB6340;
+
+$theme-colors: map-merge($theme-colors, (
+    "primary": $primary,
+    "success": $success,
+    "danger": $danger,
+));
+
+$font-family-base: 'Poppins', sans-serif;
+
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+$bootstrap-icons-font-dir: "bootstrap-icons/font/fonts";
+@import "../../node_modules/bootstrap-icons/font/bootstrap-icons.scss";
+
+.container-fluid {
+    .row {
+        .card {
+            .card-body {
+                button {
+                    & > * {
+                        pointer-events: none;
+                    }
+                    opacity: 0.1;
+                    transition: all 0.25s linear;
+
+                    &.color {
+                        &:focus {
+                            opacity: 0.75 !important;
+                        }
+                    }
+
+                    &.lock {
+                        .unlocked {
+                            transition: opacity 0.3s linear;
+                        }
+                        .locked {
+                            display: none;
+                            transition: opacity 0.3s linear;
+                        }
+                    }
+
+                    &:hover {
+                        opacity: 1;
+                        transform: scale(0.9);
+                    }
+                }
+
+                &:hover {
+                    button {
+                        color: $light !important;
+                    }
+                }
+            }
+
+            .card-footer {
+                p {
+                    opacity: 50%;
+                }
+            }
+        }
+    }
+}
+
